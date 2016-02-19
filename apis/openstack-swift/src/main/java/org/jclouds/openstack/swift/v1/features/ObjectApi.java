@@ -83,6 +83,7 @@ public interface ObjectApi {
    @GET
    @ResponseParser(ParseObjectListFromResponse.class)
    @Fallback(NullOnNotFoundOr404.class)
+   @QueryParams(keys = "format", values = "json")
    @Nullable
    ObjectList list();
 
@@ -100,6 +101,7 @@ public interface ObjectApi {
    @GET
    @ResponseParser(ParseObjectListFromResponse.class)
    @Fallback(NullOnNotFoundOr404.class)
+   @QueryParams(keys = "format", values = "json")
    @Nullable
    ObjectList list(ListContainerOptions options);
 
@@ -169,6 +171,7 @@ public interface ObjectApi {
    @Path("/{objectName}")
    @ResponseParser(ParseObjectFromResponse.class)
    @Fallback(NullOnNotFoundOr404.class)
+   @QueryParams(keys = "format", values = "json")
    @Nullable
    SwiftObject get(@PathParam("objectName") String objectName);
 
@@ -187,6 +190,7 @@ public interface ObjectApi {
    @Path("/{objectName}")
    @ResponseParser(ParseObjectFromResponse.class)
    @Fallback(NullOnNotFoundOr404.class)
+   @QueryParams(keys = "format", values = "json")
    @Nullable
    SwiftObject get(@PathParam("objectName") String objectName, GetOptions options);
 
