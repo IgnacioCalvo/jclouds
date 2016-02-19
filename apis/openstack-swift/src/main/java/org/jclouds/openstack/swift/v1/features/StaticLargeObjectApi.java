@@ -128,7 +128,6 @@ public interface StaticLargeObjectApi {
    @Named("staticLargeObject:getManifest")
    @GET
    @Fallback(EmptyListOnNotFoundOr404.class)
-   @QueryParams(keys = "format", values = "json")
-   @QueryParams(keys = "multipart-manifest", values = "get")
+   @QueryParams(keys = {"format", "multipart-manifest"}, values = {"json", "get"})
    List<Segment> getManifest(@PathParam("objectName") String objectName);
 }
