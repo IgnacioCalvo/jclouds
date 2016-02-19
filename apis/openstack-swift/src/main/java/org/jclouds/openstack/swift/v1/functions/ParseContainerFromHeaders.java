@@ -37,7 +37,7 @@ public class ParseContainerFromHeaders implements Function<HttpResponse, Contain
    @Override
    public Container apply(HttpResponse from) {
       String bytesUsed = from.getFirstHeaderOrNull(CONTAINER_BYTES_USED);
-	String objectCount = from.getFirstHeaderOrNull(CONTAINER_OBJECT_COUNT);
+      String objectCount = from.getFirstHeaderOrNull(CONTAINER_OBJECT_COUNT);
       Container c = 
       Container.builder()
             .name(name)
