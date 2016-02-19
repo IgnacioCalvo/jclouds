@@ -84,17 +84,17 @@ public class ParseObjectListFromResponse implements Function<HttpResponse, Objec
 
       @Override
       public SwiftObject apply(InternalObject input) {
-         String name = Strings.nullToEmpty(input.name);
          if (input.subdir != null) {
             return SwiftObject.builder()
-                  .uri(uriBuilder(containerUri).clearQuery().appendPath(name).build())
-                  .name(name)
+                  .uri(uriBuilder(containerUri).clearQuery().appendPath(input.subdir).build())
+                  .name(input.subdir)
                   .etag(SUBDIR_ETAG)
                   .payload(payload(input.bytes, input.hash, "application/directory", input.expires))
                   .lastModified(new Date(0)).build();
          }
+         String name = Strings.nullToEmpty(input.name);
          String etag = Strings.nullToEmpty(input.hash);
-         Date date = input.last_modified==null?new Date(0):input.last_modified;
+         Date date = input.last_modified==null ? new Date(0) : input.last_modified;
          return SwiftObject.builder()
                .uri(uriBuilder(containerUri).clearQuery().appendPath(name).build())
                .name(name)
