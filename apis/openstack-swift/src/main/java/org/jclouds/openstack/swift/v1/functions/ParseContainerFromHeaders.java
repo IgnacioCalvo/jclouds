@@ -41,8 +41,8 @@ public class ParseContainerFromHeaders implements Function<HttpResponse, Contain
       Container c = 
       Container.builder()
             .name(name)
-            .bytesUsed(bytesUsed == null ? 0 : Long.parseLong(bytesUsed))
-            .objectCount(objectCount == null ? 0 : Long.parseLong(objectCount))
+            .bytesUsed(bytesUsed!=null ? new Long(bytesUsed) : null)
+            .objectCount(objectCount!=null ? new Long(objectCount) : null)
             .anybodyRead(CONTAINER_ACL_ANYBODY_READ.equals(from.getFirstHeaderOrNull(CONTAINER_READ)))
             .metadata(EntriesWithoutMetaPrefix.INSTANCE.apply(from.getHeaders())).build();
       return c;
