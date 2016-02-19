@@ -36,6 +36,7 @@ import org.jclouds.rest.InvocationContext;
 import org.jclouds.rest.internal.GeneratedHttpRequest;
 
 import com.google.common.base.Function;
+import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import com.google.common.hash.HashCode;
 import com.google.common.io.ByteSource;
@@ -83,7 +84,7 @@ public class ParseObjectListFromResponse implements Function<HttpResponse, Objec
 
       @Override
       public SwiftObject apply(InternalObject input) {
-         String name = input.name==null?"":input.name;
+         String name = Strings.nullToEmpty(input.name);
          if (input.subdir != null) {
             return SwiftObject.builder()
                   .uri(uriBuilder(containerUri).clearQuery().appendPath(name).build())
@@ -92,7 +93,7 @@ public class ParseObjectListFromResponse implements Function<HttpResponse, Objec
                   .payload(payload(input.bytes, input.hash, "application/directory", input.expires))
                   .lastModified(new Date(0)).build();
          }
-         String etag = input.hash==null?"":input.hash;
+         String etag = Strings.nullToEmpty(input.hash);
          Date date = input.last_modified==null?new Date(0):input.last_modified;
          return SwiftObject.builder()
                .uri(uriBuilder(containerUri).clearQuery().appendPath(name).build())
