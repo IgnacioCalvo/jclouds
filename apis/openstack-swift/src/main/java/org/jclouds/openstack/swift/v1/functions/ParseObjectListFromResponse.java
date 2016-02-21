@@ -94,7 +94,7 @@ public class ParseObjectListFromResponse implements Function<HttpResponse, Objec
          }
          String name = Strings.nullToEmpty(input.name);
          String etag = Strings.nullToEmpty(input.hash);
-         Date lastModified = input.last_modified==null ? new Date() : input.last_modified;
+         Date lastModified = input.last_modified == null ? new Date() : input.last_modified;
          return SwiftObject.builder()
                .uri(uriBuilder(containerUri).clearQuery().appendPath(input.name).build())
                .name(name)
