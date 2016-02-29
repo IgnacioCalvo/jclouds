@@ -58,12 +58,12 @@ public class ContainerApiMockTest extends BaseOpenStackMockTest<SwiftApi> {
          assertEquals(containers, ImmutableList.of(
                Container.builder()
                      .name("test_container_1")
-                     .objectCount(2L)
-                     .bytesUsed(78L).build(),
+                     .objectCount(Long.valueOf(2))
+                     .bytesUsed(Long.valueOf(78)).build(),
                Container.builder()
                      .name("test_container_2")
-                     .objectCount(1L)
-                     .bytesUsed(17L).build()));
+                     .objectCount(Long.valueOf(1))
+                     .bytesUsed(Long.valueOf(17)).build()));
 
          assertEquals(server.getRequestCount(), 2);
          assertAuthentication(server);
@@ -87,12 +87,12 @@ public class ContainerApiMockTest extends BaseOpenStackMockTest<SwiftApi> {
          assertEquals(containers, ImmutableList.of(
                Container.builder()
                      .name("test_container_1")
-                     .objectCount(2L)
-                     .bytesUsed(78L).build(),
+                     .objectCount(Long.valueOf(2))
+                     .bytesUsed(Long.valueOf(78)).build(),
                Container.builder()
                      .name("test_container_2")
-                     .objectCount(1L)
-                     .bytesUsed(17L).build()));
+                     .objectCount(Long.valueOf(1))
+                     .bytesUsed(Long.valueOf(17)).build()));
 
          assertEquals(server.getRequestCount(), 2);
          assertAuthentication(server);
