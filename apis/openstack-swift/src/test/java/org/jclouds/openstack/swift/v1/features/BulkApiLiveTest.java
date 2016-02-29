@@ -85,7 +85,7 @@ public class BulkApiLiveTest extends BaseSwiftApiLiveTest<SwiftApi> {
          assertEquals(deleteResponse.getDeleted(), OBJECT_COUNT);
          assertEquals(deleteResponse.getNotFound(), 0);
          assertTrue(deleteResponse.getErrors().isEmpty());
-         assertEquals(api.getContainerApi(regionId).get(containerName).getObjectCount(), Long.valueOf(0));
+         assertEquals(api.getContainerApi(regionId).get(containerName).getObjectCount(), 0L);
       }
    }
 
