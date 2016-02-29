@@ -116,7 +116,7 @@ public class ContainerApiMockTest extends BaseOpenStackMockTest<SwiftApi> {
 
          Container container = api.getContainerApi("DFW").get("myContainer");
          assertEquals(container.getName(), "myContainer");
-         assertEquals(container.getObjectCount(), Long.valueOf(42l);
+         assertEquals(container.getObjectCount(), Long.valueOf(42l));
          assertEquals(container.getBytesUsed(), Long.valueOf(323479l));
          for (Entry<String, String> entry : container.getMetadata().entrySet()) {
             assertEquals(container.getMetadata().get(entry.getKey().toLowerCase()), entry.getValue());
